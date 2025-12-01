@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h2 All Events
+
+  if events.length > 0
+    table
+      thead
+        tr
+          th ID
+          th Organizer
+          th Event Name
+          th Type
+          th Description
+          th Location
+          th Start
+          th End
+          th Budget
+          th Status
+          th Attendees
+      tbody
+        each e in events
+          tr
+            td= e.event_ID
+            td 
+              a(href=`/organizer/${e.organizer_ID}`)= e.organizer_name
+            td= e.event_name
+            td= e.event_type
+            td= e.event_description
+            td= e.location
+            td= e.start_datetime
+            td= e.end_datetime
+            td= e.estimated_budget
+            td= e.status
+            td 
+              a(href=`/event/${e.event_ID}/attendees`)= e.attendee_count
+  else
+    p No events found.
