@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h2 Attendees for Event #{eventID}
+
+  if attendees.length > 0
+    table
+      thead
+        tr
+          th Name
+          th Email
+          th Phone
+          th Status
+          th Guest Type
+          th Notes
+      tbody
+        each a in attendees
+          tr
+            td= a.full_name
+            td= a.email
+            td= a.phone
+            td= a.invitation_status
+            td= a.guest_type
+            td= a.notes
+  else
+    p No attendees found.
+
+  a(href="/events") ← Back to Events
